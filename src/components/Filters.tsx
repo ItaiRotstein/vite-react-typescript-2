@@ -1,4 +1,4 @@
-import Rating from './Rating';
+import FilterRating from './FilterRating';
 import { CartState } from '../context/CartContext';
 
 const Filters = () => {
@@ -59,7 +59,7 @@ const Filters = () => {
                         type: 'FILTER_BY_STOCK'
                     })}
                 />
-                <span>Out of Stock</span>
+                <span>Include Out of Stock</span>
             </div>
             <div className='flex'>
                 <input
@@ -74,7 +74,7 @@ const Filters = () => {
                 />
                 <span>Fast Delivery Only</span>
             </div>
-            <Rating rating={byRating} isFiltersChild={true} filterDispatch={filterDispatch} />
+            <FilterRating rating={byRating} isFiltersChild={true} filterDispatch={filterDispatch} />
             <button 
             className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
             onClick={() => filterDispatch({

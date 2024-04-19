@@ -18,16 +18,16 @@ const CartMenu = ({ setIsShow, cart, dispatch, isShow}: Props) => {
     return (
         <div className={`${toggleClass} z-50 absolute right-0 top-14 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow`}>
             <div className="px-4 py-3">
-                <span className="font-bold block text-sm text-gray-900">
+                <h3 className="font-bold block text-sm text-gray-900">
                     Cart {cart.length <= 0 && 'is Empty'}
-                </span>
+                </h3>
                 {cart.length > 0 &&
                     cart.map((product) => (
-                        <div key={product.id} className='flex items-center justify-between my-2 py-2 border-b'>
+                        <div key={product.id} className='flex items-end justify-between my-2 py-2 border-b shadow-sm'>
                             <img src={product.image} className='w-24 mr-2 rounded-sm ' />
-                            <span className="block mt-2 mr-2 text-sm  text-gray-500 truncate">
+                            <p className="block mr-2 text-sm  text-gray-500 truncate">
                                 {product.name}
-                            </span>
+                            </p>
                             <MdDeleteForever
                                 style={{ fontSize: '20px', cursor: 'pointer' }}
                                 onClick={() => dispatch({

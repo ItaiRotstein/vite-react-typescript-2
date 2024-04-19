@@ -54,7 +54,6 @@ const CartContext = ({ children }: ShoppingCartProviderProps) => {
         searchQuery: '',
     });
 
-
     return (
         <ShoppingCart.Provider value={{
             state,
