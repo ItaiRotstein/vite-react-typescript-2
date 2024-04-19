@@ -1,22 +1,16 @@
-import { Dispatch, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { CartState } from '../context/CartContext';
-import { ProductType } from '../types/ProductType';
 import CartItem from '../components/CartItem';
-
-type CartType = {
-  state: { cart: ProductType[]; };
-  dispatch: Dispatch<any>;
-};
 
 const Cart = () => {
 
-  const { state: { cart }, dispatch }: CartType = CartState();
+  const { state: { cart }, dispatch } = CartState();
 
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const cartTotal = cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0);
+    const cartTotal = cart.reduce((acc, curr) => acc + Number(curr.price) * Number(curr.qty), 0);
     setTotal(cartTotal);
   }, [cart]);
 

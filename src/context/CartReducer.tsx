@@ -1,15 +1,16 @@
-import { ProductType } from '../types/ProductType';
+import { CartActions } from '../types/Cart';
+import { Product } from '../types/Product';
 type State = {
-  products: ProductType[];
-  cart: ProductType[];
+  products: Product[];
+  cart: Product[];
 
 };
-const CartReducer = (state: State, action: any) => {
+const CartReducer = (state: State, action: CartActions) => {
   switch (action.type) {
     case 'ADD_TO_CART':
       return {
         ...state,
-        cart: [...state.cart, { ...action.payload, qty: 1 }]
+        cart: [...state.cart, { ...action.payload, qty: '1' }]
       };
     case 'REMOVE_FROM_CART':
       return {

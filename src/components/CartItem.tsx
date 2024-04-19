@@ -1,10 +1,10 @@
 import { MdDeleteForever } from 'react-icons/md';
-import { ProductType } from '../types/ProductType';
-import { Dispatch } from 'react';
+import { Product } from '../types/Product';
+import { CartActions } from '../types/Cart';
 
 type Props = {
-    product: ProductType;
-    dispatch: Dispatch<any>;
+    product: Product;
+    dispatch: React.Dispatch<CartActions>;
 };
 
 const CartItem = ({ product, dispatch }: Props) => {

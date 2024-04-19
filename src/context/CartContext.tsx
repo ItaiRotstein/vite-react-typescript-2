@@ -1,23 +1,29 @@
 import { ReactNode, createContext, useContext, useReducer } from 'react';
 import { faker } from '@faker-js/faker';
+
 import CartReducer from './CartReducer';
-import { ProductType } from '../types/ProductType';
+import FilterReducer from './FilterReducer';
+
+import { Product } from '../types/Product';
+import { FilterActions, FilterState } from '../types/Filter';
+import { CartActions } from '../types/Cart';
 
 type ShoppingCartProviderProps = {
     children: ReactNode;
 };
 
-type Cart = {
-    // state: {
-        products: ProductType[];
-    //     cart: ProductType[];
-    // };
-    dispatch: any;
-    useReducer: any;
-    state:any
+type ShoppingCart = {
+    state: {
+        products: Product[];
+        cart: Product[];
+    };
+    dispatch: React.Dispatch<CartActions>;
+    filterState: FilterState;
+    filterDispatch: React.Dispatch<FilterActions>;
+
 };
 
-const Cart = createContext({} as Cart);
+const ShoppingCart = createContext({} as ShoppingCart);
 
 const CartContext = ({ children }: ShoppingCartProviderProps) => {
 
@@ -31,36 +37,37 @@ const CartContext = ({ children }: ShoppingCartProviderProps) => {
             fastDelivery: faker.datatype.boolean(),
             inStock: faker.helpers.arrayElement([0, 3, 5, 6, 7]),
             rating: faker.helpers.arrayElement([1, 2, 3, 4, 5]),
-            qty: 0
+            qty: ''
         }
     ));
 
-    const [state, dispatch] = useReducer<any>(CartReducer, {
-        products,
+    const [state, dispatch] = useReducer(CartReducer, {
+        products: products,
         cart: []
     });
 
-    const [productState, prosuctDispatch] = useReducer<any>(productReducer, {
+    const [filterState, filterDispatch] = useReducer(FilterReducer, {
         byStock: false,
         byFastDelivery: false,
+        sort: '',
         byRating: 0,
-        searchQuery: ''
+        searchQuery: '',
     });
 
 
     return (
-        <Cart.Provider value={{
-            products,
+        <ShoppingCart.Provider value={{
             state,
             dispatch,
-            useReducer
+            filterState,
+            filterDispatch
         }}>
             {children}
-        </Cart.Provider>
+        </ShoppingCart.Provider>
     );
 };
 export default CartContext;
 
 export const CartState = () => {
-    return useContext(Cart);
+    return useContext(ShoppingCart);
 };

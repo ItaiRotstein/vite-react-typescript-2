@@ -1,26 +1,21 @@
-import { Dispatch } from 'react';
 import { CartState } from '../context/CartContext';
-import { ProductType } from '../types/ProductType';
+import { Product } from '../types/Product';
 import Rating from './Rating';
 
 type Props = {
-    product: ProductType;
-};
-type Cart = {
-    state: {
-        products: ProductType[],
-        cart: ProductType[];
-    };
-    dispatch: Dispatch<any>;
+    product: Product;
 };
 
 const ProductPreview = ({ product }: Props) => {
 
-    const { state: { cart }, dispatch }: Cart = CartState();
+    const { state: { cart }, dispatch } = CartState();
 
-    const buttonClass = product.inStock
-        ? ('bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded'
-        ) : ("bg-blue-500 text-white font-bold py-2 px-4 mt-2 rounded opacity-50 cursor-not-allowed");
+    //Button class: add to cart / out of order
+    const buttonClass = product.inStock ? (
+        'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-2 rounded'
+    ) : (
+        "bg-blue-500 text-white font-bold py-2 px-4 mt-2 rounded opacity-50 cursor-not-allowed"
+    );
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg m-2">
@@ -33,27 +28,30 @@ const ProductPreview = ({ product }: Props) => {
                 <p className="text-gray-700 text-base">
                     {product.fastDelivery ? 'Fast Delivery' : 'Delivery: 3 Days'}
                 </p>
-                <Rating rating={product.rating} setRate={() => { }} isFromFilters={false} />
+                <Rating rating={product.rating} isFiltersChild={false} filterDispatch={() => { }} />
                 {
-                    cart.some(item => item.id === product.id)
-                        ? (
-                            <button
-                                className="unreset bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 mt-2 rounded"
-                                onClick={() => dispatch({
-                                    type: 'REMOVE_FROM_CART',
-                                    payload: product.id
-                                })}
-                            >
-                                Remove from Cart
-                            </button>
-                        ) : (
-                            <button disabled={product.inStock === 0} className={buttonClass} onClick={() => dispatch({
+                    cart.some(item => item.id === product.id) ? (
+                        <button
+                            className="unreset bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 mt-2 rounded"
+                            onClick={() => dispatch({
+                                type: 'REMOVE_FROM_CART',
+                                payload: product.id
+                            })}
+                        >
+                            Remove from Cart
+                        </button>
+                    ) : (
+                        <button
+                            disabled={product.inStock === 0}
+                            className={buttonClass}
+                            onClick={() => dispatch({
                                 type: 'ADD_TO_CART',
-                                payload: product
-                            })}>
-                                {!product.inStock ? 'Out of Stock' : 'Add to Cart'}
-                            </button>
-                        )
+                                payload: product,
+                            })}
+                        >
+                            {!product.inStock ? 'Out of Stock' : 'Add to Cart'}
+                        </button>
+                    )
                 }
             </div>
 

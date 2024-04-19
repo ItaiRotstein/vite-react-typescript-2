@@ -1,7 +1,7 @@
 import Filters from '../components/Filters';
 import ProductPreview from '../components/ProductPreview';
 import { CartState } from '../context/CartContext';
-import { ProductType } from '../types/ProductType';
+import { ProductType } from '../types/Product';
 
 type State = {
   products: ProductType[];
