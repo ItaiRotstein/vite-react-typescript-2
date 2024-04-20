@@ -1,48 +1,49 @@
 import { ReactNode, createContext, useContext, useReducer } from 'react';
-import { faker } from '@faker-js/faker';
 
+import ProductReducer from './ProductReducer';
 import CartReducer from './CartReducer';
 import FilterReducer from './FilterReducer';
 
-import { Product } from '../types/Product';
-import { FilterActions, FilterState } from '../types/Filter';
+import { Product, ProductActions } from '../types/Product';
 import { CartActions } from '../types/Cart';
+import { FilterActions, FilterState } from '../types/Filter';
 
-type ShoppingCartProviderProps = {
+type Props = {
     children: ReactNode;
 };
 
 type ShoppingCart = {
-    state: {
-        products: Product[];
-        cart: Product[];
-    };
-    dispatch: React.Dispatch<CartActions>;
-    filterState: FilterState;
+    productDispatch: React.Dispatch<ProductActions>;
+    cartDispatch: React.Dispatch<CartActions>;
     filterDispatch: React.Dispatch<FilterActions>;
-
+    productState: { products: Product[]; };
+    cartState: { cart: Product[]; };
+    filterState: FilterState;
 };
 
 const ShoppingCart = createContext({} as ShoppingCart);
 
-const CartContext = ({ children }: ShoppingCartProviderProps) => {
+const CartContext = ({ children }: Props) => {
 
-    faker.seed(99);
-    const products = [...Array(20)].map(() => (
-        {
-            id: faker.string.uuid(),
-            name: faker.commerce.productName(),
-            price: faker.commerce.price(),
-            image: faker.image.url(),
-            fastDelivery: faker.datatype.boolean(),
-            inStock: faker.helpers.arrayElement([0, 3, 5, 6, 7]),
-            rating: faker.helpers.arrayElement([1, 2, 3, 4, 5]),
-            qty: ''
-        }
-    ));
+    // faker.seed(99);
+    // const products = [...Array(20)].map(() => (
+    //     {
+    //         id: faker.string.uuid(),
+    //         name: faker.commerce.productName(),
+    //         price: faker.commerce.price(),
+    //         image: faker.image.url(),
+    //         fastDelivery: faker.datatype.boolean(),
+    //         inStock: faker.helpers.arrayElement([0, 3, 5, 6, 7]),
+    //         rating: faker.helpers.arrayElement([1, 2, 3, 4, 5]),
+    //         qty: ''
+    //     }
+    // ));
 
-    const [state, dispatch] = useReducer(CartReducer, {
-        products: products,
+    const [productState, productDispatch] = useReducer(ProductReducer, {
+        products: [],
+    });
+
+    const [cartState, cartDispatch] = useReducer(CartReducer, {
         cart: []
     });
 
@@ -56,10 +57,12 @@ const CartContext = ({ children }: ShoppingCartProviderProps) => {
 
     return (
         <ShoppingCart.Provider value={{
-            state,
-            dispatch,
+            productState,
+            cartState,
             filterState,
-            filterDispatch
+            productDispatch,
+            cartDispatch,
+            filterDispatch,
         }}>
             {children}
         </ShoppingCart.Provider>

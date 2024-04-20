@@ -1,17 +1,32 @@
+import { useEffect } from 'react';
 import Filters from '../components/Filters';
 import ProductPreview from '../components/ProductPreview';
 import { CartState } from '../context/CartContext';
+import productService from '../services/productService';
 
 const Home = () => {
 
-  const { state: { products },
+  const {
+    productState: {
+      products
+    },
     filterState: {
       byStock,
       byFastDelivery,
       sort,
       byRating,
       searchQuery
-    } } = CartState();
+    },
+    productDispatch,
+  } = CartState();
+
+  useEffect(() => {
+    const fetch = async () => {
+      productDispatch({ type: 'GET_PRODUCTS', payload: await productService.getProducts() });
+    };
+    fetch();
+  }, []);
+
 
   const filterProducts = () => {
     let filteredProducts = products;
@@ -49,13 +64,15 @@ const Home = () => {
     }
     return filteredProducts;
   };
+  console.log(products);
+  if (!products) return <h1>Loading...</h1>;
 
   return (
     <div className='flex'>
       <Filters />
       <div className=' flex flex-wrap justify-around'>
         {filterProducts().map(prod => (
-          <ProductPreview prod={{ ...prod }} key={prod.id} />
+          <ProductPreview prod={{ ...prod }} key={prod._id} />
         ))}
       </div>
     </div>

@@ -4,10 +4,10 @@ import { CartActions } from '../types/Cart';
 
 type Props = {
     product: Product;
-    dispatch: React.Dispatch<CartActions>;
+    cartDispatch: React.Dispatch<CartActions>;
 };
 
-const CartItem = ({ product, dispatch }: Props) => {
+const CartItem = ({ product, cartDispatch }: Props) => {
     return (
         <li className="w-full flex justify-between items-center gap-4 px-4 md:px-8 lg:px-24 py-2 border-b rounded-t-lg dark:border-gray-600">
             <img src={product.image} className='w-32 rounded-sm' />
@@ -17,7 +17,7 @@ const CartItem = ({ product, dispatch }: Props) => {
                 id="qty"
                 name="qty"
                 value={product.qty}
-                onChange={(e) => dispatch(
+                onChange={(e) => cartDispatch(
                     {
                         type: 'CHANGE_CART_QTY',
                         payload: { id: product.id, qty: e.target.value }
@@ -29,7 +29,7 @@ const CartItem = ({ product, dispatch }: Props) => {
             </select>
             <MdDeleteForever
                 style={{ fontSize: '20px', cursor: 'pointer' }}
-                onClick={() => dispatch({
+                onClick={() => cartDispatch({
                     type: 'REMOVE_FROM_CART',
                     payload: product.id
                 })}

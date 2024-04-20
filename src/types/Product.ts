@@ -1,5 +1,5 @@
 export type Product = {
-        id: string;
+        _id: number;
         name: string;
         price: string;
         image: string;
@@ -8,3 +8,7 @@ export type Product = {
         rating: number;
         qty: string;
 };
+
+type GetProducts = { type: 'GET_PRODUCTS'; payload: []; };
+
+export type ProductActions = GetProducts;

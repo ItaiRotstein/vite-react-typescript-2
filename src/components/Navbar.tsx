@@ -11,8 +11,8 @@ const Navbar = () => {
     const [isShow, setIsShow] = useState(false);
 
     const {
-        state: { cart },
-        dispatch,
+        cartState: { cart },
+        cartDispatch,
         filterState: { searchQuery },
         filterDispatch
     } = CartState();
@@ -39,7 +39,7 @@ const Navbar = () => {
                         </div>
                     }
                 </button>
-                <CartMenu isShow={isShow} setIsShow={setIsShow} cart={cart} dispatch={dispatch} />
+                <CartMenu isShow={isShow} setIsShow={setIsShow} cart={cart} cartDispatch={cartDispatch} />
             </div>
         </nav>
     );

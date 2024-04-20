@@ -8,10 +8,10 @@ type Props = {
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
     isShow: boolean;
     cart: Product[];
-    dispatch: React.Dispatch<CartActions>;
+    cartDispatch: React.Dispatch<CartActions>;
 }
 
-const CartMenu = ({ setIsShow, cart, dispatch, isShow}: Props) => {
+const CartMenu = ({ setIsShow, cart, cartDispatch, isShow}: Props) => {
 
     const toggleClass = isShow ? '' : 'hidden';
 
@@ -23,16 +23,16 @@ const CartMenu = ({ setIsShow, cart, dispatch, isShow}: Props) => {
                 </h3>
                 {cart.length > 0 &&
                     cart.map((product) => (
-                        <div key={product.id} className='flex items-end justify-between my-2 py-2 border-b shadow-sm'>
+                        <div key={product._id} className='flex items-end justify-between my-2 py-2 border-b shadow-sm'>
                             <img src={product.image} className='w-24 mr-2 rounded-sm ' />
                             <p className="block mr-2 text-sm  text-gray-500 truncate">
                                 {product.name}
                             </p>
                             <MdDeleteForever
                                 style={{ fontSize: '20px', cursor: 'pointer' }}
-                                onClick={() => dispatch({
+                                onClick={() => cartDispatch({
                                     type: 'REMOVE_FROM_CART',
-                                    payload: product.id
+                                    payload: product._id
                                 })}
                             />
                         </div>

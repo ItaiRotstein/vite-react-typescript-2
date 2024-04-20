@@ -1,0 +1,202 @@
+[
+    {
+        "id": "ab7ddb0b-c39f-4490-98fd-06c4ba6775e9",
+        "name": "Fantastic Frozen Gloves",
+        "price": "525.00",
+        "image": "https://picsum.photos/seed/GOkdp/640/480",
+        "fastDelivery": false,
+        "inStock": 6,
+        "rating": 2,
+        "qty": ""
+    },
+    {
+        "id": "bd4de36a-9106-4914-8213-8711c3502e18",
+        "name": "Intelligent Metal Sausages",
+        "price": "378.00",
+        "image": "https://picsum.photos/seed/2cwWDn/640/480",
+        "fastDelivery": false,
+        "inStock": 6,
+        "rating": 5,
+        "qty": ""
+    },
+    {
+        "id": "54fff724-c806-493f-9eaf-ed364b6d2186",
+        "name": "Generic Concrete Chips",
+        "price": "971.00",
+        "image": "https://picsum.photos/seed/DMcHi/640/480",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 3,
+        "qty": ""
+    },
+    {
+        "id": "41bdfe0c-5e0b-4dbb-b0d2-e021798186bc",
+        "name": "Handmade Wooden Shirt",
+        "price": "106.00",
+        "image": "https://loremflickr.com/640/480?lock=5529339869265920",
+        "fastDelivery": true,
+        "inStock": 3,
+        "rating": 3,
+        "qty": ""
+    },
+    {
+        "id": "d379b457-1c4d-4293-9b83-52b5a4c3cb80",
+        "name": "Sleek Frozen Bacon",
+        "price": "107.00",
+        "image": "https://loremflickr.com/640/480?lock=3737458839650304",
+        "fastDelivery": true,
+        "inStock": 0,
+        "rating": 5,
+        "qty": ""
+    },
+    {
+        "id": "89ce7860-5f1b-4b7c-b194-ec283bddac81",
+        "name": "Rustic Soft Ball",
+        "price": "555.00",
+        "image": "https://picsum.photos/seed/cf1HuomCA/640/480",
+        "fastDelivery": false,
+        "inStock": 3,
+        "rating": 4,
+        "qty": ""
+    },
+    {
+        "id": "9bf1f314-af8a-4a25-9a5d-be930f13b2fa",
+        "name": "Small Soft Bacon",
+        "price": "294.00",
+        "image": "https://loremflickr.com/640/480?lock=4188929263665152",
+        "fastDelivery": true,
+        "inStock": 5,
+        "rating": 5,
+        "qty": ""
+    },
+    {
+        "id": "cffcfd9e-c635-4eb6-9a3a-db1bd311187f",
+        "name": "Handmade Cotton Keyboard",
+        "price": "269.00",
+        "image": "https://loremflickr.com/640/480?lock=2631547310047232",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 3,
+        "qty": ""
+    },
+    {
+        "id": "0ab387fb-d232-4e77-a40e-23a62d708ae0",
+        "name": "Unbranded Metal Computer",
+        "price": "157.00",
+        "image": "https://loremflickr.com/640/480?lock=70852538269696",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 5,
+        "qty": ""
+    },
+    {
+        "id": "b637ad98-1794-435b-a519-bc9bca0e4dce",
+        "name": "Ergonomic Fresh Shirt",
+        "price": "691.00",
+        "image": "https://picsum.photos/seed/slGgZ/640/480",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 5,
+        "qty": ""
+    },
+    {
+        "id": "51fc6c6f-d204-4122-88ff-176ceb690260",
+        "name": "Refined Rubber Gloves",
+        "price": "468.00",
+        "image": "https://loremflickr.com/640/480?lock=3209923387195392",
+        "fastDelivery": false,
+        "inStock": 7,
+        "rating": 4,
+        "qty": ""
+    },
+    {
+        "id": "e87176e9-edd7-4a48-9efe-434f1d6f8d1a",
+        "name": "Luxurious Cotton Gloves",
+        "price": "990.00",
+        "image": "https://picsum.photos/seed/e7kpJMTCwH/640/480",
+        "fastDelivery": true,
+        "inStock": 7,
+        "rating": 1,
+        "qty": ""
+    },
+    {
+        "id": "5dbca214-a00b-43e1-9a34-fdd541f3172b",
+        "name": "Handmade Steel Ball",
+        "price": "411.00",
+        "image": "https://picsum.photos/seed/SM1LPZcw/640/480",
+        "fastDelivery": true,
+        "inStock": 7,
+        "rating": 1,
+        "qty": ""
+    },
+    {
+        "id": "b5c84796-cd83-4d08-bb48-1d409874b66f",
+        "name": "Recycled Concrete Chair",
+        "price": "977.00",
+        "image": "https://picsum.photos/seed/PRPqwf/640/480",
+        "fastDelivery": false,
+        "inStock": 7,
+        "rating": 2,
+        "qty": ""
+    },
+    {
+        "id": "64be2df6-2ce0-40e5-be78-b7b647151104",
+        "name": "Luxurious Bronze Pizza",
+        "price": "815.00",
+        "image": "https://loremflickr.com/640/480?lock=2494867567542272",
+        "fastDelivery": true,
+        "inStock": 0,
+        "rating": 4,
+        "qty": ""
+    },
+    {
+        "id": "7ebed78c-456f-4f9c-8462-b266c8406297",
+        "name": "Elegant Metal Pizza",
+        "price": "667.00",
+        "image": "https://picsum.photos/seed/4IVC7ARE0X/640/480",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 1,
+        "qty": ""
+    },
+    {
+        "id": "ef55023e-8b88-48f9-a206-f5602e30b35c",
+        "name": "Rustic Frozen Mouse",
+        "price": "466.00",
+        "image": "https://loremflickr.com/640/480?lock=5047095551590400",
+        "fastDelivery": true,
+        "inStock": 3,
+        "rating": 2,
+        "qty": ""
+    },
+    {
+        "id": "bcb96066-afa1-4d6f-804f-5c5c9e48918c",
+        "name": "Fantastic Soft Car",
+        "price": "767.00",
+        "image": "https://picsum.photos/seed/EASDb/640/480",
+        "fastDelivery": true,
+        "inStock": 6,
+        "rating": 2,
+        "qty": ""
+    },
+    {
+        "id": "4b23b3d1-987f-4c76-9cad-581262abbc66",
+        "name": "Bespoke Concrete Shoes",
+        "price": "100.00",
+        "image": "https://loremflickr.com/640/480?lock=5009221634490368",
+        "fastDelivery": false,
+        "inStock": 5,
+        "rating": 2,
+        "qty": ""
+    },
+    {
+        "id": "2ad0f183-0926-47bf-a3df-39ee2233c789",
+        "name": "Generic Granite Chair",
+        "price": "400.00",
+        "image": "https://picsum.photos/seed/KaYWf1/640/480",
+        "fastDelivery": false,
+        "inStock": 0,
+        "rating": 4,
+        "qty": ""
+    }
+]

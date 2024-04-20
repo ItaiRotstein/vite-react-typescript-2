@@ -5,7 +5,7 @@ import CartItem from '../components/CartItem';
 
 const Cart = () => {
 
-  const { state: { cart }, dispatch } = CartState();
+  const { cartState: { cart }, cartDispatch } = CartState();
 
   const [total, setTotal] = useState(0);
 
@@ -22,9 +22,9 @@ const Cart = () => {
           <ul className="w-full text-sm font-medium text-gray-900 bg-white  rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             {cart.map(product => (
               <CartItem
-                key={product.id}
+                key={product._id}
                 product={product}
-                dispatch={dispatch}
+                cartDispatch={cartDispatch}
               />
             ))}
           </ul>

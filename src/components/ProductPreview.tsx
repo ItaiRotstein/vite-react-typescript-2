@@ -8,7 +8,7 @@ type Props = {
 
 const ProductPreview = ({ prod }: Props) => {
 
-    const { state: { cart }, dispatch } = CartState();
+    const { cartState: { cart }, cartDispatch } = CartState();
 
     //Button class: add to cart / out of order
     const buttonClass = prod.inStock ? (
@@ -32,12 +32,12 @@ const ProductPreview = ({ prod }: Props) => {
                 </p>
                 <Rating rating={prod.rating} />
                 {
-                    cart.some(item => item.id === prod.id) ? (
+                    cart.some(item => item._id === prod._id) ? (
                         <button
                             className="unreset bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 mt-2 rounded"
-                            onClick={() => dispatch({
+                            onClick={() => cartDispatch({
                                 type: 'REMOVE_FROM_CART',
-                                payload: prod.id
+                                payload: prod._id
                             })}
                         >
                             Remove from Cart
@@ -46,7 +46,7 @@ const ProductPreview = ({ prod }: Props) => {
                         <button
                             disabled={prod.inStock === 0}
                             className={buttonClass}
-                            onClick={() => dispatch({
+                            onClick={() => cartDispatch({
                                 type: 'ADD_TO_CART',
                                 payload: prod,
                             })}

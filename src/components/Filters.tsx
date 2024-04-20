@@ -8,7 +8,6 @@ const Filters = () => {
             byStock,
             byFastDelivery,
             sort,
-            byRating,
         },
         filterDispatch } = CartState();
 
@@ -74,7 +73,7 @@ const Filters = () => {
                 />
                 <span>Fast Delivery Only</span>
             </div>
-            <FilterRating rating={byRating} isFiltersChild={true} filterDispatch={filterDispatch} />
+            <FilterRating />
             <button 
             className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
             onClick={() => filterDispatch({

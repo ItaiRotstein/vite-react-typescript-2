@@ -1,15 +1,8 @@
-import React from 'react';
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { CartState } from '../context/CartContext';
-import { FilterActions } from '../types/Filter';
 
-type Props = {
-    rating: number;
-    isFiltersChild: boolean;
-    filterDispatch: React.Dispatch<FilterActions>;
-};
-const FilterRating = ({ isFiltersChild }: Props) => {
+const FilterRating = () => {
 
     const {
         filterState: { byRating },
@@ -17,9 +10,7 @@ const FilterRating = ({ isFiltersChild }: Props) => {
     } = CartState();
 
     const handleClick = (idx: number) => {
-        if (isFiltersChild) {
             filterDispatch({ type: 'FILTER_BY_RATING', payload: idx + 1 });
-        }
     };
     return (
         <div className='flex items-center'>
@@ -28,7 +19,7 @@ const FilterRating = ({ isFiltersChild }: Props) => {
                 <span
                     key={idx}
                     onClick={() => handleClick(idx)}
-                    className={isFiltersChild ? 'cursor-pointer' : ''}
+                    className={'cursor-pointer'}
                 >
                     {byRating > idx ? (
                         <AiFillStar />
