@@ -1,14 +1,19 @@
 import { Product, ProductActions } from '../types/Product';
-type State = {
+type ProductState = {
   products: Product[];
-  // cart: Product[];
+  productsCount: number;
 }
-const ProductReducer = (state: State, action: ProductActions) => {
+const ProductReducer = (state: ProductState, action: ProductActions) => {
   switch (action.type) {
     case 'GET_PRODUCTS':
       return {
         ...state,
         products: action.payload
+      };
+    case 'GET_PRODUCTS_COUNT':
+      return {
+        ...state,
+        productsCount: action.payload
       };
     default:
       return state;

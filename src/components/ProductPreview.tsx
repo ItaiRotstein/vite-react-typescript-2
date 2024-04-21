@@ -1,4 +1,4 @@
-import { CartState } from '../context/CartContext';
+import { AppState } from '../context/AppContext';
 import { Product } from '../types/Product';
 import Rating from './Rating';
 
@@ -8,7 +8,7 @@ type Props = {
 
 const ProductPreview = ({ prod }: Props) => {
 
-    const { cartState: { cart }, cartDispatch } = CartState();
+    const { cartState: { cart }, cartDispatch } = AppState();
 
     //Button class: add to cart / out of order
     const buttonClass = prod.inStock ? (

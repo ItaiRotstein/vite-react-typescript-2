@@ -20,7 +20,7 @@ const CartItem = ({ product, cartDispatch }: Props) => {
                 onChange={(e) => cartDispatch(
                     {
                         type: 'CHANGE_CART_QTY',
-                        payload: { id: product.id, qty: e.target.value }
+                        payload: { _id: product._id, qty: e.target.value }
                     }
                 )}>
                 {[...Array(product.inStock).keys()].map((stock) => (
@@ -31,7 +31,7 @@ const CartItem = ({ product, cartDispatch }: Props) => {
                 style={{ fontSize: '20px', cursor: 'pointer' }}
                 onClick={() => cartDispatch({
                     type: 'REMOVE_FROM_CART',
-                    payload: product.id
+                    payload: product._id
                 })}
             />
         </li>

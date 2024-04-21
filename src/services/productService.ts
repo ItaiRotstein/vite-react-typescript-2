@@ -3,10 +3,18 @@ import axios from "axios";
 const API_URL = "http://localhost:5000/api/products";
 
 //--Get products--
-const getProducts = async () => {
-    const response = await axios.get(API_URL);
+const getProducts = async (page: number) => {
+    // console.log(page);
+    
+    const response = await axios.get(`${API_URL}/?p=${page}`);
     return await response.data;
     
+};
+
+//--Get products count--
+const getProductsCount = async () => {
+    const response = await axios.get(`${API_URL}/count`);
+    return await response.data;
 };
 
 // //--Get product by ID--
@@ -59,6 +67,7 @@ const getProducts = async () => {
 
 const productService = {
     getProducts,
+    getProductsCount
     //   getProductById,
     //   addProduct,
     //   updateProduct,

@@ -4,7 +4,7 @@ import ProductReducer from './ProductReducer';
 import CartReducer from './CartReducer';
 import FilterReducer from './FilterReducer';
 
-import { Product, ProductActions } from '../types/Product';
+import { Product,ProductState, ProductActions} from '../types/Product';
 import { CartActions } from '../types/Cart';
 import { FilterActions, FilterState } from '../types/Filter';
 
@@ -16,31 +16,18 @@ type ShoppingCart = {
     productDispatch: React.Dispatch<ProductActions>;
     cartDispatch: React.Dispatch<CartActions>;
     filterDispatch: React.Dispatch<FilterActions>;
-    productState: { products: Product[]; };
+    productState: ProductState;
     cartState: { cart: Product[]; };
     filterState: FilterState;
 };
 
 const ShoppingCart = createContext({} as ShoppingCart);
 
-const CartContext = ({ children }: Props) => {
-
-    // faker.seed(99);
-    // const products = [...Array(20)].map(() => (
-    //     {
-    //         id: faker.string.uuid(),
-    //         name: faker.commerce.productName(),
-    //         price: faker.commerce.price(),
-    //         image: faker.image.url(),
-    //         fastDelivery: faker.datatype.boolean(),
-    //         inStock: faker.helpers.arrayElement([0, 3, 5, 6, 7]),
-    //         rating: faker.helpers.arrayElement([1, 2, 3, 4, 5]),
-    //         qty: ''
-    //     }
-    // ));
+const AppContext = ({ children }: Props) => {
 
     const [productState, productDispatch] = useReducer(ProductReducer, {
         products: [],
+        productsCount: 0
     });
 
     const [cartState, cartDispatch] = useReducer(CartReducer, {
@@ -68,8 +55,25 @@ const CartContext = ({ children }: Props) => {
         </ShoppingCart.Provider>
     );
 };
-export default CartContext;
+export default AppContext;
 
-export const CartState = () => {
+export const AppState = () => {
     return useContext(ShoppingCart);
 };
+
+
+// import { faker } from '@faker-js/faker';
+// faker.seed(99);
+// const items = [...Array(100)].map(() => (
+//     {
+//         id: faker.string.uuid(),
+//         name: faker.commerce.productName(),
+//         price: faker.commerce.price(),
+//         image: faker.image.url(),
+//         fastDelivery: faker.datatype.boolean(),
+//         inStock: faker.helpers.arrayElement([0, 3, 5, 6, 7]),
+//         rating: faker.helpers.arrayElement([1, 2, 3, 4, 5]),
+//         qty: ''
+//     }
+// ));
+// console.log(items);

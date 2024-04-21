@@ -6,12 +6,12 @@ import { CartActions } from '../types/Cart';
 
 type Props = {
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>;
-    isShow: boolean;
-    cart: Product[];
     cartDispatch: React.Dispatch<CartActions>;
-}
+    cart: Product[];
+    isShow: boolean;
+};
 
-const CartMenu = ({ setIsShow, cart, cartDispatch, isShow}: Props) => {
+const CartMenu = ({ setIsShow, cartDispatch, cart, isShow }: Props) => {
 
     const toggleClass = isShow ? '' : 'hidden';
 

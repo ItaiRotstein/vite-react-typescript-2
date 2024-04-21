@@ -1,13 +1,13 @@
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
-import { CartState } from '../context/CartContext';
+import { AppState } from '../context/AppContext';
 
 const FilterRating = () => {
 
     const {
         filterState: { byRating },
         filterDispatch
-    } = CartState();
+    } = AppState();
 
     const handleClick = (idx: number) => {
             filterDispatch({ type: 'FILTER_BY_RATING', payload: idx + 1 });

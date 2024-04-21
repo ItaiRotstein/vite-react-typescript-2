@@ -1,5 +1,5 @@
 import FilterRating from './FilterRating';
-import { CartState } from '../context/CartContext';
+import { AppState } from '../context/AppContext';
 
 const Filters = () => {
 
@@ -9,7 +9,7 @@ const Filters = () => {
             byFastDelivery,
             sort,
         },
-        filterDispatch } = CartState();
+        filterDispatch } = AppState();
 
     // console.log('byStock:', byStock);
     // console.log('byFastDelivery:', byFastDelivery);
@@ -31,7 +31,7 @@ const Filters = () => {
                         payload: 'lowtohigh'
                     })}
                 />
-                <span className=''>Ascending</span>
+                <span className=''>Price Ascending</span>
             </div>
             <div className='flex'>
                 <input
@@ -45,7 +45,7 @@ const Filters = () => {
                         payload: 'hightolow'
                     })}
                 />
-                <span>Descending</span>
+                <span>Price Descending</span>
             </div>
             <div className='flex'>
                 <input

@@ -1,32 +1,38 @@
-import { useEffect } from 'react';
-import Filters from '../components/Filters';
-import ProductPreview from '../components/ProductPreview';
-import { CartState } from '../context/CartContext';
+import { useEffect, useState } from 'react';
+import Spinner from '../components/Spinner';
+
+import { AppState } from '../context/AppContext';
+
 import productService from '../services/productService';
 
+import Filters from '../components/Filters';
+import ProductPreview from '../components/ProductPreview';
+import Pagination from '../components/Pagination';
+
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
-    productState: {
-      products
-    },
-    filterState: {
-      byStock,
-      byFastDelivery,
-      sort,
-      byRating,
-      searchQuery
-    },
+    productState: { products },
+    filterState: { byStock, byFastDelivery, sort, byRating, searchQuery },
     productDispatch,
-  } = CartState();
+  } = AppState();
 
   useEffect(() => {
-    const fetch = async () => {
-      productDispatch({ type: 'GET_PRODUCTS', payload: await productService.getProducts() });
+    const getProducts = async () => {
+      try {
+        productDispatch({
+          type: 'GET_PRODUCTS',
+          payload: await productService.getProducts(0)
+        });
+      } catch (error) {
+        console.log("Error fetching data", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
-    fetch();
+    getProducts();
   }, []);
-
 
   const filterProducts = () => {
     let filteredProducts = products;
@@ -64,11 +70,11 @@ const Home = () => {
     }
     return filteredProducts;
   };
-  console.log(products);
-  if (!products) return <h1>Loading...</h1>;
+
+  if (isLoading) return <Spinner isLoading={isLoading} />;
 
   return (
-    <div className='flex'>
+    <>    <div className='flex'>
       <Filters />
       <div className=' flex flex-wrap justify-around'>
         {filterProducts().map(prod => (
@@ -76,6 +82,9 @@ const Home = () => {
         ))}
       </div>
     </div>
+      <Pagination />
+    </>
+
   );
 };
 export default Home;

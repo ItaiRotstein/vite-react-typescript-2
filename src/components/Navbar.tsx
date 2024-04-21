@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { FaShoppingCart } from "react-icons/fa";
 
-import { CartState } from '../context/CartContext';
+import { AppState } from '../context/AppContext';
 import CartMenu from './CartMenu';
 import { Link } from 'react-router-dom';
 import SearchFilter from './SearchFilter';
@@ -15,7 +15,7 @@ const Navbar = () => {
         cartDispatch,
         filterState: { searchQuery },
         filterDispatch
-    } = CartState();
+    } = AppState();
 
     return (
         <nav className="bg-white border-b border-solid-gray-200 md:px-4 lg:px-20">

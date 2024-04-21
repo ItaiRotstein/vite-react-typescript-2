@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-import { CartState } from '../context/CartContext';
+import { AppState } from '../context/AppContext';
 import CartItem from '../components/CartItem';
 
 const Cart = () => {
 
-  const { cartState: { cart }, cartDispatch } = CartState();
+  const { cartState: { cart }, cartDispatch } = AppState();
 
   const [total, setTotal] = useState(0);
 
