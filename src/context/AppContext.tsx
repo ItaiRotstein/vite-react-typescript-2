@@ -40,6 +40,8 @@ const AppContext = ({ children }: Props) => {
         sort: '',
         byRating: 0,
         searchQuery: '',
+        itemsPerPage: 20,
+        pageNum: 0,
     });
 
     return (

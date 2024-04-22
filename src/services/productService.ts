@@ -1,20 +1,15 @@
 import axios from "axios";
+import { FilterState } from '../types/Filter';
 
 const API_URL = "http://localhost:5000/api/products";
 
 //--Get products--
-const getProducts = async (page: number) => {
-    // console.log(page);
-    
-    const response = await axios.get(`${API_URL}/?p=${page}`);
-    return await response.data;
-    
-};
-
-//--Get products count--
-const getProductsCount = async () => {
-    const response = await axios.get(`${API_URL}/count`);
-    return await response.data;
+const getProducts = async (filterState: FilterState) => {
+    const config = {
+        params: filterState
+    };
+    const response = await axios.get(API_URL, config);        
+    return await response.data.products;
 };
 
 // //--Get product by ID--
@@ -67,7 +62,6 @@ const getProductsCount = async () => {
 
 const productService = {
     getProducts,
-    getProductsCount
     //   getProductById,
     //   addProduct,
     //   updateProduct,

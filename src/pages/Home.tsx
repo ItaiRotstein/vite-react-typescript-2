@@ -14,16 +14,21 @@ const Home = () => {
 
   const {
     productState: { products },
-    filterState: { byStock, byFastDelivery, sort, byRating, searchQuery },
+    filterState,
     productDispatch,
   } = AppState();
 
   useEffect(() => {
     const getProducts = async () => {
       try {
+        const productsData = await productService.getProducts(filterState);
         productDispatch({
           type: 'GET_PRODUCTS',
-          payload: await productService.getProducts(0)
+          payload: productsData.data
+        });
+        productDispatch({
+          type: 'GET_PRODUCTS_COUNT',
+          payload: productsData.metadata.totalCount
         });
       } catch (error) {
         console.log("Error fetching data", error);
@@ -32,42 +37,16 @@ const Home = () => {
       }
     };
     getProducts();
-  }, []);
+  }, [filterState]);
 
   const filterProducts = () => {
     let filteredProducts = products;
 
-    if (sort) {
-      filteredProducts = filteredProducts.sort((a, b) =>
-        sort === 'lowtohigh' ?
-          Number(a.price) - Number(b.price) :
-          Number(b.price) - Number(a.price)
-      );
-    }
-
-    if (!byStock) {
-      filteredProducts = filteredProducts.filter((prod) => prod.inStock);
-    }
-
-    if (byFastDelivery) {
-      filteredProducts = filteredProducts.filter((prod) => prod.fastDelivery);
-    }
-
-    if (byRating) {
-      filteredProducts = filteredProducts.filter((prod) =>
-        prod.rating >= byRating
-      );
-    }
-
-    if (searchQuery) {
-      filteredProducts = filteredProducts.filter((prod) =>
-        prod.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
-      );
-      // const regex = new RegExp(searchQuery, 'i');
-      // filteredProducts = filteredProducts.filter(prod =>
-      //   regex.test(prod.name)
-      // );
-    }
+    // if (searchQuery) {
+    //   filteredProducts = filteredProducts.filter((prod) =>
+    //     prod.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
+    //   );
+    // }
     return filteredProducts;
   };
 

@@ -5,7 +5,9 @@ const initialState = {
     byFastDelivery: false,
     sort: '',
     byRating: 0,
-    searchQuery: ''
+    searchQuery: '',
+    itemsPerPage: 20,
+    pageNum: 0
 };
 
 const FilterReducer = (state: FilterState, action: FilterActions) => {
@@ -21,7 +23,11 @@ const FilterReducer = (state: FilterState, action: FilterActions) => {
         case 'FILTER_BY_SEARCH':
             return { ...state, searchQuery: action.payload };
         case 'CLEAR_FILTERS':
-            return initialState ;
+            return initialState;
+        case 'SET_ITEMS_PER_PAGE':
+            return { ...state, itemsPerPage: action.payload };
+        case 'SET_PAGE_NUM':
+            return { ...state, pageNum: action.payload };
         default:
             return state;
     }
