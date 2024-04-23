@@ -8,6 +8,7 @@ const Filters = () => {
             byStock,
             byFastDelivery,
             sort,
+            itemsPerPage
         },
         filterDispatch } = AppState();
 
@@ -69,11 +70,29 @@ const Filters = () => {
                 <span>Fast Delivery Only</span>
             </div>
             <FilterRating />
-            <button 
-            className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
-            onClick={() => filterDispatch({
-                type: 'CLEAR_FILTERS'
-            })}
+            <div>
+                <span className='mr-4'>Items Per Page</span>
+                <select
+                    className='max-w-6 rounded-sm'
+                    id="itemsPerPage"
+                    name="itemsPerPage"
+                    value={itemsPerPage}
+                    onChange={(e) => filterDispatch(
+                        {
+                            type: 'SET_ITEMS_PER_PAGE',
+                            payload: Number(e.target.value)
+                        }
+                    )}>
+                    <option>10</option>
+                    <option selected>20</option>
+                    <option>50</option>
+                </select>
+            </div>
+            <button
+                className="bg-transparent hover:bg-blue-500 text-white font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
+                onClick={() => filterDispatch({
+                    type: 'CLEAR_FILTERS'
+                })}
             >
                 Clear Filters
             </button>

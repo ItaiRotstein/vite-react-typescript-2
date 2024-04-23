@@ -25,7 +25,7 @@ const Home = () => {
         productDispatch({
           type: 'GET_PRODUCTS',
           payload: productsData.data
-        });
+        }); 
         productDispatch({
           type: 'GET_PRODUCTS_COUNT',
           payload: productsData.metadata.totalCount
